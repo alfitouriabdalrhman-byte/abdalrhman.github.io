@@ -2,13 +2,85 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>مينيو المقهى</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مينيو مقهى عبدالرحمن الفيتوري</title>
+<style>
+/* 🎨 الألوان والتصميم المحسّن */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* خلفية فاتحة ناعمة */
+    color: #333;
+    padding: 10px;
+    direction: rtl; /* دعم اللغة العربية */
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #5D4037; /* لون بني غامق للقهوة */
+    border-bottom: 3px solid #D7CCC8; /* خط تحت العنوان */
+    padding-bottom: 15px;
+  }
+
+  h2 {
+    color: #8D6E63; /* لون بني متوسط لتقسيم الأقسام */
+    background-color: #EFEBE9; /* خلفية خفيفة للعنوان الفرعي */
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  p {
+    text-align: center;
+    color: #616161;
+  }
+
+  /* تصميم الصنف الواحد */
+  .item {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+    transition: transform 0.2s, background-color 0.2s;
+  }
+
+  .item:hover {
+    background-color: #FFFDE7; /* لون فاتح عند المرور */
+    transform: translateY(-2px);
+  }
+
+  .name {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .price {
+    color: #A1887F; /* لون سعر مميز */
+    font-weight: bold;
+  }
+
+  /* تصميم الصنف المختار */
+  .selected {
+    background-color: #E8F5E9; /* أخضر فاتح جداً */
+    border: 3px solid #66BB6A; /* إطار أخضر مميز */
+    box-shadow: 0 0 10px rgba(102, 187, 106, 0.5);
+  }
+</style>
 </head>
 <body>
 <h1>☕ مقهى عبدالرحمن الفيتوري</h1>
 <p>اختر طلبك بالضغط على الصنف</p>
 <p>عدد الأصناف المختارة: <span id="count">0</span></p>
-<h2>☕ القهوة</h2>
+
+<h2>☕ القهوة (ساخنة وباردة)</h2>
 
 <div class="item">
   <span class="name">إسبريسو</span>
@@ -21,38 +93,93 @@
 </div>
 
 <div class="item">
-  <span class="name">خلطة</span>
+  <span class="name">مكياطة</span>
+  <span class="price">7 د</span>
+</div>
+
+<div class="item">
+  <span class="name">خلطة </span>
   <span class="price">8 د</span>
 </div>
-<style>
-.selected {
-  background: #c8e6c9;
-  border: 2px solid green;
-}
-  body {
-    font-family: Arial;
-    background: #f5f5f5;
-    padding: 20px;
-  }
 
-  h1 {
-    text-align: center;
-  }
+<h2>🔥 المشروبات الساخنة</h2>
 
-  .item {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-  }
+<div class="item">
+  <span class="name">هوت شوكليت</span>
+  <span class="price">9 د</span>
+</div>
 
-  .item:hover {
-    background: #e0f7fa;
-  }
-</style>
+<div class="item">
+  <span class="name">نسكافيه </span>
+  <span class="price">6 د</span>
+</div>
+
+<div class="item">
+  <span class="name">شاي أحمر</span>
+  <span class="price">4 د</span>
+</div>
+
+<div class="item">
+  <span class="name">شاي بالنعناع</span>
+  <span class="price">5 د</span>
+</div>
+
+<h2>🍹 العصائر الطبيعية</h2>
+
+<div class="item">
+  <span class="name">عصير فراولة طبيعي</span>
+  <span class="price">10 د</span>
+</div>
+
+<div class="item">
+  <span class="name">عصير برتقال طبيعي</span>
+  <span class="price">9 د</span>
+</div>
+
+<div class="item">
+  <span class="name">عصير مانجو</span>
+  <span class="price">10 د</span>
+</div>
+
+<div class="item">
+  <span class="name">عصير كيوي</span>
+  <span class="price">12 د</span>
+</div>
+
+<h2>🍰 الحلويات</h2>
+
+<div class="item">
+  <span class="name">كيكة </span>
+  <span class="price">15 د</span>
+</div>
+
+<div class="item">
+  <span class="name">بان كيك</span>
+  <span class="price">18 د</span>
+</div>
+
+<div class="item">
+  <span class="name">كيك شوكولاتة</span>
+  <span class="price">7 د</span>
+</div>
+
+<h2>✨ إضافات أخرى</h2>
+
+<div class="item">
+  <span class="name">نص نص</span>
+  <span class="price">2 د</span>
+</div>
+
+<div class="item">
+  <span class="name">كريمة  </span>
+  <span class="price">3 د</span>
+</div>
+
+<div class="item">
+  <span class="name">مياه معدنية (صغيرة)</span>
+  <span class="price">1 د</span>
+</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
