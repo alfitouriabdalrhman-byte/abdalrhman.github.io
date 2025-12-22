@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مينيو مقهى عبدالرحمن الفيتوري</title>
 <style>
-/* 🎨 الألوان والتصميم المحسّن */
+/* 🎨 الألوان والتصميم */
   body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5; /* خلفية فاتحة ناعمة */
@@ -38,6 +38,17 @@
     color: #616161;
   }
 
+  /* تنسيق شريط المجموع */
+  .summary-bar {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #FBEFBE; /* خلفية شريط المجموع */
+    border-radius: 8px;
+    border: 1px solid #E6D7A7;
+    font-weight: bold;
+  }
+
   /* تصميم الصنف الواحد */
   .item {
     background: white;
@@ -65,6 +76,7 @@
   .price {
     color: #A1887F; /* لون سعر مميز */
     font-weight: bold;
+    pointer-events: none; /* لمنع الكليك على السعر بدلاً من الصنف */
   }
 
   /* تصميم الصنف المختار */
@@ -78,12 +90,16 @@
 <body>
 <h1>☕ مقهى عبدالرحمن الفيتوري</h1>
 <p>اختر طلبك بالضغط على الصنف</p>
-<p>عدد الأصناف المختارة: <span id="count">0</span></p>
 
+<div class="summary-bar">
+    <span>عدد الأصناف المختارة: <span id="count">0</span></span>
+    <span> | </span>
+    <span>الإجمالي: <span id="totalPrice">0</span> د.ل</span>
+</div>
 <h2>☕ القهوة (ساخنة وباردة)</h2>
 
 <div class="item">
-  <span class="name">إسبريسو</span>
+  <span class="name">إسبريسو (مفرد)</span>
   <span class="price">5 د</span>
 </div>
 
@@ -98,7 +114,7 @@
 </div>
 
 <div class="item">
-  <span class="name">خلطة </span>
+  <span class="name">خلطة خاصة</span>
   <span class="price">8 د</span>
 </div>
 
@@ -110,7 +126,7 @@
 </div>
 
 <div class="item">
-  <span class="name">نسكافيه </span>
+  <span class="name">نسكافيه</span>
   <span class="price">6 د</span>
 </div>
 
@@ -127,12 +143,12 @@
 <h2>🍹 العصائر الطبيعية</h2>
 
 <div class="item">
-  <span class="name">عصير فراولة طبيعي</span>
+  <span class="name">عصير فراولة </span>
   <span class="price">10 د</span>
 </div>
 
 <div class="item">
-  <span class="name">عصير برتقال طبيعي</span>
+  <span class="name">عصير برتقال </span>
   <span class="price">9 د</span>
 </div>
 
@@ -166,17 +182,17 @@
 <h2>✨ إضافات أخرى</h2>
 
 <div class="item">
-  <span class="name">نص نص</span>
+  <span class="name">نص نص (إضافة حليب)</span>
   <span class="price">2 د</span>
 </div>
 
 <div class="item">
-  <span class="name">كريمة  </span>
+  <span class="name">كريمة </span>
   <span class="price">3 د</span>
 </div>
 
 <div class="item">
-  <span class="name">مياه معدنية (صغيرة)</span>
+  <span class="name">ماء</span>
   <span class="price">1 د</span>
 </div>
 
@@ -185,10 +201,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const items = document.querySelectorAll('.item');
   const countSpan = document.getElementById('count');
+  const totalPriceSpan = document.getElementById('totalPrice'); 
 
   function updateCount() {
     const selectedItems = document.querySelectorAll('.item.selected');
+    let total = 0;
+
+    selectedItems.forEach(item => {
+        const priceElement = item.querySelector('.price');
+        
+        // استخراج القيمة الرقمية من النص (مثل '5 د' -> 5)
+        const priceText = priceElement.textContent.replace(' د', '').trim();
+        const price = parseFloat(priceText) || 0;
+        
+        total += price;
+    });
+
+    // تحديث عدد الأصناف
     countSpan.textContent = selectedItems.length;
+
+    // تحديث السعر الإجمالي
+    totalPriceSpan.textContent = total.toFixed(1); // عرض السعر
   }
 
   items.forEach(item => {
@@ -197,7 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
       updateCount();
     });
   });
-
+  
+  updateCount();
 });
 </script>
 </body>
